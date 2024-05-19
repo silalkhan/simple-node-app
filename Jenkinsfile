@@ -1,26 +1,12 @@
 pipeline {
     agent any
     
+    tools {nodejs "node"}
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git 'https://github.com/silalkhan/simple-node-app.git'
-            }
-        }
-        stage('Install dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Run tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        stage('Build and deploy') {
-            steps {
-                sh 'npm run build'
-                // Add additional deployment steps here
+              git 'https://github.com/silalkhan/simple-node-app.git'    
+              bat 'npm install'
             }
         }
     }
